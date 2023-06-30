@@ -19,11 +19,13 @@ def transform(data:dict) -> pd.DataFrame:
     return df[["domains","country","web_pages","name"]]
 
 def load(df:pd.DataFrame)-> None:
-     disk_engine = create_engine('sqlite:///my_lite_store.db')
-    df.to_sql('cal_uni', disk_engine, if_exists='replace')
+    disk_engine = create_engine('sqlite:///My_ETL_Output_University_store.db')
+    df.to_sql('My_ETL_Output_University', disk_engine, if_exists='replace')
 
 # %%
 data = extract()
 df = transform(data)
 load(df)
+
+
 # %%
